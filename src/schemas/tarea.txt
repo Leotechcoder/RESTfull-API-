@@ -1,0 +1,1 @@
+Revisar los esquemas y mejorar la autenticacion de tipos mediante zod!!
