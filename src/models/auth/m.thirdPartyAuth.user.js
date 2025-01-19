@@ -3,10 +3,7 @@ import { pool } from '../../data/db.js';
 export const  findOrCreate = async (thirdPartyId, username ) => {
     
     const result = await pool.query('SELECT * FROM public.users WHERE id_ = $1', [thirdPartyId]);
-<<<<<<< HEAD
-    
-=======
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
     let user = result.rows[0];
         
     if (!user) {
@@ -26,11 +23,7 @@ export const  findOrCreate = async (thirdPartyId, username ) => {
 
         try {
             const insertResult = await pool.query(insertQuery, filteredValues);
-<<<<<<< HEAD
             console.log(`insertResult: ${insertResult}`);
-=======
-            console.log(insertResult);
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
         } catch (error) {
             console.error('Error inserting user:', error);
         }

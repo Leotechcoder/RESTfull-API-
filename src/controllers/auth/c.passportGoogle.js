@@ -14,10 +14,7 @@ export class AuthGoogle {
       scope: ['profile'],
       },
       function(accessToken, refreshToken, profile, cb) {
-<<<<<<< HEAD
-        
-=======
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
         const { id, displayName } = profile;
         findOrCreate(id, displayName)
         .then((user) => cb(null, user))
@@ -26,19 +23,12 @@ export class AuthGoogle {
     ));
         
     passport.serializeUser((user, done)=> {
-<<<<<<< HEAD
       
       done(null, user);
     });
 
     passport.deserializeUser((user, done)=> {
       
-=======
-      done(null, user);
-    });
-        
-    passport.deserializeUser((user, done)=> {
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
       done(null, user)
     });
         

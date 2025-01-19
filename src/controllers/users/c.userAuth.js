@@ -1,9 +1,6 @@
 import { UserAuthModel } from "../../models/auth/m.auth.user.js";
 import { LOGIN_URL} from "../../lib/config.js";
-<<<<<<< HEAD
 import { isAuthenticated } from "../../middleware/auth.js";
-=======
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
 
 export class UserAuthController {
 
@@ -53,41 +50,24 @@ export class UserAuthController {
             if (err) {
             return res.status(404).json({message: 'error al cargar'})
             }else{
-                    
-<<<<<<< HEAD
-                // await UserAuthModel.clear(req, res)
-=======
-                await UserAuthModel.clear(req, res)
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
                 res.redirect(LOGIN_URL)
             }
         });
     }
 
 /*Verificacion de usuario logueado */
-<<<<<<< HEAD
     static async authUser(req, res) {
         const authenticated = isAuthenticated(req, res)
         
         if(!authenticated) {
             return res.status(401).json({
                 username: 'invitado',
-=======
-    static async getUserAuth(req, res) {
-        res.set({ "content-type": "text/html; charset=utf-8" })
-        const {passport} = req.session;
-        console.log(req);
-        
-        if(!passport) {
-            return res.status(401).json({
-                username: null,
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
                 error: true,
                 message: 'Debes iniciar sesión para acceder a esta ruta'
             });
 
         }else{
-<<<<<<< HEAD
             
             const {user} = req.session.passport
                 
@@ -96,16 +76,6 @@ export class UserAuthController {
                     username: 'invitado',
                     error: true,
                     message: 'Debes iniciar sesión para acceder a esta ruta'
-=======
-
-            const {user} = req.session.passport;
-                
-            if(!user){
-                return res.status(401).json({
-                    username: null,
-                    error: true,
-                        message: 'Debes iniciar sesión para acceder a esta ruta'
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
                 });
 
             }else{

@@ -9,21 +9,15 @@ const userSchema = z.object({
     phone: z.number(),
     address: z.string(),
     avatar: z.string(),
-<<<<<<< HEAD
-=======
     registration_date: z.string(),
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
 });
 
 /*Defino esquema para actualizar */
 const userSchemaUpdate = z.object({
     username: z.string(),
     password_: z.string(),
-<<<<<<< HEAD
     phone: z.number(),
-=======
     phone: z.string(),
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
     address: z.string(),
     avatar: z.string(),
  });

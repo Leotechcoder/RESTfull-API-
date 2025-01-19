@@ -16,17 +16,11 @@ const sessionMiddleware = session({
   resave: false,              // No volver a guardar sesiones no modificadas
   saveUninitialized: false,   // No guardar sesiones vacías
   cookie: {
-<<<<<<< HEAD
     // secure: PRODUCTION, // Activar solo en producción
     maxAge: 1000 * 60 * 60 * 24 * 7,
     sameSite: 'strict', // Restringe el envío de cookies a solicitudes del mismo origen
     httpOnly: true,      // Evita acceso desde JavaScript del cliente
-=======
-    secure: PRODUCTION, // Activar solo en producción
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-    sameSite: 'strict', // Restringe el envío de cookies a solicitudes del mismo origen
-    httpOnly: true      // Evita acceso desde JavaScript del cliente
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
   }
 });
 

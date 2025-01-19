@@ -1,13 +1,9 @@
 
-<<<<<<< HEAD
+
 import { UsersModel } from "../../models/users/m.users.js"; //importo la clase Users del archivo users.js
 import { access } from "../../middleware/authAccess.js";
 import { validatePartialUser, validateUserUpdate } from '../../schemas/users/userSchema.js';
-=======
-import { UsersModel } from "../../models/m.users.js"; //importo la clase Users del archivo users.js
-import { access } from "../../middleware/authAccess.js";
-import { validateUser, validatePartialUser, validateUserUpdate } from '../../schemas/users/userSchema.js';
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
 
 
 
@@ -38,12 +34,9 @@ export class UsersController {
             return acceso.status
         }else{
             const userId = parseInt(req.params.id);
-            
-<<<<<<< HEAD
+
             const user = await UsersModel.getById({ userId }); //obtengo el usuario por id
-=======
-            const user = await UsersModel.getById({userId, res}); //obtengo el usuario por id
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
             if(!user){
                 return res.status(404).send('Usuario no encontrado');
             }else{
@@ -121,14 +114,11 @@ export class UsersController {
         }else{
             const userId = parseInt(req.params.id);
 
-<<<<<<< HEAD
             const eliminado = await UsersModel.delete({ userId }); //Elimino el usuario con el id
             if(!eliminado){
                 return res.status(404).json({ message: "Usuario no encontrado" });
             }
-=======
-            UsersModel.delete({userId, res}); //Elimino el usuario con el id
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
             res.end().json('Usuario eliminado correctamente!');
         }
     }

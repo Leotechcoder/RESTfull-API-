@@ -9,19 +9,12 @@ import helmet from 'helmet'
 //Importo las rutas de login, usuarios y orders
 import { routerUserAuth } from './routes/auth/r.auth.js';
 import { routerUsers } from './routes/users/r.users.js';
-<<<<<<< HEAD
 import { routerOrders } from './routes/orders/r.orders.js';
 import { routerProducts } from './routes/products/r.products.js';
 import { authGoogle } from './routes/auth/r.authGoogle.js';
 import { authFacebook } from './routes/auth/r.authFacebook.js';
 
 import { PORT } from './lib/config.js';
-=======
-import { authGoogle } from './routes/auth/r.authGoogle.js';
-import { authFacebook } from './routes/auth/r.authFacebook.js';
-
-import { PORT, SECRET_KEY } from './lib/config.js';
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
 import { ACCEPTED_ORIGINS } from './lib/access.js';//Origenes permitidos
 import sessionMiddleware from './middleware/sessionMiddleware.js';
 
@@ -33,8 +26,6 @@ app.use(express.json()); //middleware para poder leer el body de las peticiones
 app.use(express.urlencoded({extended: true}));//true para trabajar con sesiones
 app.disable( 'x-powered-by' ); // Ocultar la cabecera de express
 
-<<<<<<< HEAD
-//Middleware de CORS
 app.use(
   cors({
     origin: ACCEPTED_ORIGINS, //Puedes cambiar esto para permitir solo una IP o un dominio
@@ -70,7 +61,6 @@ app.use(morgan("dev"))
     routerUserAuth
   );
 
-=======
 //Sessiones
   app.use(sessionMiddleware);
 
@@ -106,7 +96,6 @@ app.use(morgan("dev"))
     routerUserAuth
   );
 
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
 
 //Configuracion autenticacion google
   AuthGoogle.passportSetup()
@@ -117,12 +106,9 @@ app.use(morgan("dev"))
   app.use(authFacebook); //Rutas de autenticacion de usuario facebook
 
 
-<<<<<<< HEAD
-=======
 //Rutas para crear, obtener y modificar ordenes
   app.use(routerOrders);
   
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
 //Rutas para crear, obtener y modificar informacion sobre usuarios
   app.use(routerUsers);
   

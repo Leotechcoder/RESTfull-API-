@@ -2,11 +2,6 @@ import crypto from 'crypto';
 
 import { pool } from '../../data/db.js';
 import bcrypt from 'bcrypt';
-<<<<<<< HEAD
-=======
-import { PRODUCTION, SECRET_KEY } from '../../lib/config.js';
-import jwt from 'jsonwebtoken';
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
 
 export class UserAuthModel {
 
@@ -66,12 +61,8 @@ export class UserAuthModel {
         //Buscar el usuario en la base de datos
         const user = await UserAuthModel.existsByEmail({email})
         if(!user){
-<<<<<<< HEAD
             return false
-=======
-            console.log('El usuario no existe')
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
-        }
+     }
             
         //Comprobar la contraseña
         const match = await bcrypt.compare(password, user.password_);
@@ -80,30 +71,9 @@ export class UserAuthModel {
             return false
         }
             
-<<<<<<< HEAD
         // Guardar la sesión del usuario
          req.session.passport = {user};
-=======
-        //Generar un token de acceso
-        const accessToken = 
-        jwt.sign(
-            {id: user._id}, 
-            SECRET_KEY, 
-            {expiresIn: '1h'}
-        );
-        // Guardar la sesión del usuario
-        req.session.passport = {user};
 
-        // Establecer cookie de acceso
-        res.cookie('connect.sid', accessToken, {
-            httpOnly: true,
-            secure: PRODUCTION,
-            sameSite: 'strict',
-            maxAge: 1000 * 60 * 60 * 24 * 7,
-            path: '/',
-        });
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
- 
         // Respuesta exitosa
         return user.username;
 
@@ -126,21 +96,6 @@ export class UserAuthModel {
         return result.rows[0];
         
     }
-    
-/*Limpiar datos de usuario */
-    static async clear(req, res){
-        req.sessionID = null
-        req.session = null
-        res.clearCookie(
-            'connect.sid',
-            {expires: new Date(0),
-            httpOnly: true,
-            secure: false,
-            path: '/'}
-        )
-        return
-    }
-
  
 }
 

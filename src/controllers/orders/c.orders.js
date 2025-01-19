@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+
 import { OrdersModel } from "../../models/orders/m.orders.js";
-=======
-import { OrdersModel } from "../../models/m.orders.js";
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
 import { access } from "../../middleware/authAccess.js";
 import {
   validateOrder,
@@ -18,11 +15,8 @@ export class OrdersController {
       return acceso.status;
     } else {
       // Obtengo todas las ordenes
-<<<<<<< HEAD
       const orders = await OrdersModel.getAll();
-=======
-      const orders = await OrdersModel.get();
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
       if (!orders) {
         return res.status(404).json({
           message: "No se encontraron ordenes",
@@ -42,11 +36,8 @@ export class OrdersController {
       const orderId = parseInt(req.params.id);
 
       // Obtengo la orden por id
-<<<<<<< HEAD
       const order = await OrdersModel.getById({ orderId });
-=======
-      const order = await OrdersModel.getById({ orderId, res });
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
       if (!order) {
         return res.status(404).json({
           message: "Order not found",
@@ -67,22 +58,17 @@ export class OrdersController {
       const result = validateOrder(req.body);
 
       // Si hay un error en los datos de la orden, devuelvo un error
-<<<<<<< HEAD
       if (!result.success) {
-=======
-      if (result.error) {
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
         return res
           .status(400)
           .json({ message: "Error en los datos de la orden" });
       } else {
         const newOrder = await OrdersModel.create(result);
-<<<<<<< HEAD
         if (!newOrder) {
           return res.status(500).json({ message: "Error al crear la orden" });
         }
-=======
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
         res.status(201).json(newOrder);
       }
     }
@@ -106,11 +92,8 @@ export class OrdersController {
       }
 
       // Actualizo la orden
-<<<<<<< HEAD
       const updatedOrder = OrdersModel.updatePartial({ orderId, result });
-=======
-      const updatedOrder = OrdersModel.updatePartial({ orderId, result, res });
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
       if (!updatedOrder) {
         return res.status(404).json({ message: "Order not found" });
       }
@@ -129,11 +112,8 @@ export class OrdersController {
       const orderId = parseInt(req.params.id);
 
       // Elimino la orden
-<<<<<<< HEAD
       const order = await OrdersModel.delete({ orderId });
-=======
-      const order = await OrdersModel.delete({ orderId, res });
->>>>>>> baaf369 (Autenticacion manual, google y facebook)
+
       if (!order) {
         return res.status(404).json({ message: "Order not found" });
       }
